@@ -29,6 +29,20 @@ public class GlidedRoseTest {
 
     @Test
     public void sumArrayNumbersWithLettersAndSpacers(){
-        assertEquals(7, gr.add("1,2,A,\n,4"));
+        assertEquals(7, gr.add("1,2,A,\n4"));
+        assertEquals(6, gr.add("1\n2,3"));
     }
+
+    @Test
+    public void sumArrayNumbers_With_Delimiter(){
+        assertEquals(3,gr.add("//;\n1;2"));
+    }
+
+    @Test
+    public void sumArrayNumbers_With_NegativeNumber(){
+        assertEquals("Negatives not allowed [-2]",gr.add("//;\n1;-2"));
+        assertEquals("Negatives not allowed [-3, -4, -5, -20]",gr.add("-3,-4,-5,-20"));
+    }
+
+
 }
